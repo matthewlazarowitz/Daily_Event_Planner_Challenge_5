@@ -30,11 +30,30 @@ $(document).ready(function () {
         timeBlocks.each(function() {
           var hour = $(this).attr('id').split('-')[1];
           var eventTextarea = $(this).find('.description');
-          
+
           if (savedEvents[hour]) {
             eventTextarea.val(savedEvents[hour]);
           }
         });
       }
+    function updateColors() {
+        
+        var currentHour = dayjs().hour();
+    
+       
+        timeBlocks.each(function() {
+          var hour = parseInt($(this).attr('id').split('-')[1]);
 
+          $(this).removeClass('past present future');
+    
+          if (hour < currentHour) {
+
+            $(this).addClass('past');
+          } else if (hour === currentHour) {
+            $(this).addClass('present');
+          } else {
+            $(this).addClass('future');
+          }
+        });
+      }
 });
