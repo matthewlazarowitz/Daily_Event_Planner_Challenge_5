@@ -24,4 +24,17 @@ $(document).ready(function () {
         localStorage.setItem('events', JSON.stringify(events));
     }
 
+    function loadEvents() {
+        var savedEvents = getEvents();
+    
+        timeBlocks.each(function() {
+          var hour = $(this).attr('id').split('-')[1];
+          var eventTextarea = $(this).find('.description');
+          
+          if (savedEvents[hour]) {
+            eventTextarea.val(savedEvents[hour]);
+          }
+        });
+      }
+
 });
