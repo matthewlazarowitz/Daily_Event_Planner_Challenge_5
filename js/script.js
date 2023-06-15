@@ -9,6 +9,14 @@ $(document).ready(function() {
         currentDayEl.text(currentDay);
       }
 
-      
+      function getEvents() {
+       
+        var events = localStorage.getItem('events');
+        
+        var parsed = JSON.parse(events);
+    
+       
+        return parsed || {};
+      }
 
 });
